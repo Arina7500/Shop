@@ -1,0 +1,22 @@
+# Переменные окружения
+.env
+.env.local
+.env.*.local
+
+# Зависимости
+node_modules/
+
+# Данные Docker (volume)
+postgres_data/
+
+# Логи
+*.log
+npm-debug.log*
+
+# Файлы IDE
+.vscode/
+.idea/
+
+# OS files
+.DS_Store
+Thumbs.db
