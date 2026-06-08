@@ -21,6 +21,9 @@
         <a href="/catalog" data-link>Каталог</a> 
         <a href="/journal">Журнал о чае</a> 
         <a href="/cart" data-link>Корзина (<span id="cart-counter">0</span>)</a>
+        <a href="#" id="authLink">Вход</a>
+        <span id="userDisplay" style="color: white; margin-left: 10px;"></span>
+        <a href="/admin" data-link>Админ</a>
     </nav>
 
     <div id="app">
@@ -63,5 +66,79 @@
 
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="/js/app.js"></script>
+
+    <!-- Модальное окно для оформления заказа -->
+    <div id="orderModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2>Оформление заказа</h2>
+            <form id="orderForm">
+                <div class="form-group">
+                    <label for="customer_name">Имя *</label>
+                    <input type="text" id="customer_name" name="customer_name" required>
+                    <div class="error-message" id="name-error"></div>
+                </div>
+                <div class="form-group">
+                    <label for="customer_phone">Телефон *</label>
+                    <input type="tel" id="customer_phone" name="customer_phone" required>
+                    <div class="error-message" id="phone-error"></div>
+                </div>
+                <div class="form-group">
+                    <label for="customer_email">Email *</label>
+                    <input type="email" id="customer_email" name="customer_email" required>
+                    <div class="error-message" id="email-error"></div>
+                </div>
+                <div class="form-group">
+                    <label for="delivery_address">Адрес доставки *</label>
+                    <textarea id="delivery_address" name="delivery_address" rows="2" required></textarea>
+                    <div class="error-message" id="address-error"></div>
+                </div>
+                <div class="form-group">
+                    <label for="delivery_date">Дата доставки</label>
+                    <input type="date" id="delivery_date" name="delivery_date">
+                </div>
+                <div class="form-group">
+                    <label for="comment">Комментарий к заказу</label>
+                    <textarea id="comment" name="comment" rows="2" maxlength="500"></textarea>
+                    <div class="char-counter">Осталось символов: <span id="charCount">500</span></div>
+                </div>
+                <div class="form-group">
+                    <label for="payment_method">Способ оплаты *</label>
+                    <select id="payment_method" name="payment_method" required>
+                        <option value="card">Банковская карта</option>
+                        <option value="cash">Наличными при получении</option>
+                    </select>
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="cancel-btn" id="cancelOrderBtn">Отмена</button>
+                    <button type="submit" class="submit-btn">Подтвердить заказ</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Модальное окно входа -->
+    <div id="authModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" id="closeAuthModal">&times;</span>
+            <h2>Вход / Регистрация</h2>
+            <form id="authForm">
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" id="authEmail" required>
+                </div>
+                <div class="form-group">
+                    <label>Пароль</label>
+                    <input type="password" id="authPassword" required>
+                </div>
+                <div class="form-actions">
+                    <button type="button" id="loginBtn" class="submit-btn">Войти</button>
+                    <button type="button" id="registerBtn" class="cancel-btn">Зарегистрироваться</button>
+                </div>
+            </form>
+            <div id="authMessage" style="color: red; margin-top: 10px;"></div>
+        </div>
+    </div>
+
 </body>
 </html>

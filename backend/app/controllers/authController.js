@@ -1,5 +1,3 @@
-const db = require('../../models');
-
 class AuthController {
   constructor(authService) {
     this.authService = authService;
@@ -35,9 +33,9 @@ class AuthController {
   }
 
   async getUser(req, res) {
-    if (!req.session.userId) return res.json({ user: null });
-    const user = await db.User.findByPk(req.session.userId, { attributes: ['id', 'email', 'role'] });
-    res.json({ user });
+      if (!req.session.userId) return res.json({ user: null });
+      const user = await this.authService.getUser(req.session.userId);
+      res.json({ user });
   }
 }
 

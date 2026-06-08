@@ -10,8 +10,8 @@ class AuthService {
     if (existing) {
       throw new Error('Email already used');
     }
-    const hashedPassword = await bcrypt.hash(password, 10);
-    const user = await this.authRepository.create({ email, password: hashedPassword });
+    // Модель сама захеширует пароль через beforeCreate
+    const user = await this.authRepository.create({ email, password });
     return { id: user.id, email: user.email, role: user.role };
   }
 
