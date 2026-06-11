@@ -41,7 +41,7 @@ services:
       - tea-network
 
   frontend:
-    build: ./frontend
+    build: ./frontend_vite
     container_name: tea-shop-frontend
     restart: always
     ports:
